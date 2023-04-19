@@ -10,6 +10,20 @@ export const getReviews = async (req, res) => {
     }
   };
 
+  export const getSingleReview = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const review = await Review.findById(id);
+      if (review) {
+        return res.json(review);
+      }
+      res.status(404).json({ message: "Not found! Use Valid ID" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+    }
+  };
+
   export const createReview = async (req, res) => {
     try {
       const review = new Review(req.body);
