@@ -14,6 +14,7 @@ function App() {
   return( 
   <div>
     <Header />
+    <div className="listings">
     {data.map((info)=>(
     <Card 
     winery={info.winery}
@@ -26,6 +27,7 @@ function App() {
     comments={info.comments}
     />
     ))}
+    </div>
   </div>
   )
 }

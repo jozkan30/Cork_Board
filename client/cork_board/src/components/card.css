@@ -3,9 +3,17 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 5px;
+    margin: 1rem;
 }
 .card-container{
+    margin: 1rem;
     background-color: rgb(239, 231, 220);
     width: 500px;
+    padding: 1rem;
     
+}
+
+span {
+    font-weight: bold;
 }

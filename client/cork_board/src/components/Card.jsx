@@ -13,11 +13,11 @@ export default function Card({winery,grapes,vintage, region, country, desc, rati
         <p className='info'>{desc}</p>
         <p className='rating'> Rating: {rating}</p>
         </div>
-        {comments && comments.length > 0 && (
+        {comments && comments.length >= 0 && (
           <div>
-            <h4>Comments:</h4>
+            <h4>Reviews:</h4>
             {comments.map((comment)=>(
-              <p key={comment._id}>{comment.user}: {comment.content}</p>
+              <p key={comment._id}> <span>{comment.user}:</span> {comment.content}</p>
             ))}
           </div>
         )}

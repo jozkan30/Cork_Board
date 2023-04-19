@@ -10,9 +10,10 @@ let Comment = new Schema({
 });
 
 let Review = new Schema({
-  title: { type: String, required: true },
+  winery: { type: String, required: true },
+  grapes: { type: String, required: true },
   vintage: { type: Number, required: true },
-  reigon: { type: String, required: true },
+  region: { type: String, required: true },
   country: { type: String, required: true },
   description: { type: String, required: true },
   rating: { type: Number, required: true },
