@@ -1,5 +1,5 @@
 import connection from './connection.js'
-import Review from './Wine.js'
+import Review from './models/Wine_model.js'
 
 const reviews = [
     {

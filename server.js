@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import logger from "morgan";
+import routes from "./routes/index.js";
+import db from "./connection.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
