@@ -20,3 +20,23 @@ export const getReviews = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
+
+  export const createComment = async (req, res) => {
+    const { id } = req.params;
+    const { user, content } = req.body;
+    try {
+      const review = await Review.findById(id);
+  
+      if (!review) {
+        return res.status(404).json({ message: 'Review not found' });
+      }
+  
+      review.comments.push({ user, content });
+      await review.save();
+  
+      res.status(201).json(review);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  };
