@@ -1,13 +1,14 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import  mongoose from 'mongoose'
 
-const app = express();
 
-mongoose.connect('mongodb://localhost/wines', {
+let mongooseConfig = {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(() => {
-  console.log('Connected to database');
-}).catch((err) => {
-  console.log('Error connecting to database', err);
-});
+}
+mongoose.connect("mongodb://127.0.0.1:27017/wine", mongooseConfig)
+
+mongoose.connection.on('connected', ()=> console.log("Connected to database"))
+mongoose.connection.on('disconnected', ()=> console.log("Disconnected from database"))
+mongoose.connection.on('error', error=> console.error("Database error", error))
+
+export default mongoose.connection
