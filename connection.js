@@ -1,11 +1,18 @@
-import  mongoose from 'mongoose'
+import mongoose from "mongoose";
+
+mongoose.set('strictQuery', false)
 
 
-let mongooseConfig = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+let connectionConfig ={
+    useNewURLParser: true,
+    useUnifiedTopology: true
 }
-mongoose.connect("mongodb://127.0.0.1:27017/wine", mongooseConfig)
+
+const url = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/FakeStore'
+
+mongoose.connect(url, connectionConfig)
+
+
 
 mongoose.connection.on('connected', ()=> console.log("Connected to database"))
 mongoose.connection.on('disconnected', ()=> console.log("Disconnected from database"))
