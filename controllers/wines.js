@@ -54,3 +54,20 @@ export const getReviews = async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   };
+
+  export const deleteReview = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deleted = await Review.findByIdAndDelete(id);
+  
+      if (deleted) {
+        return res.status(200).send("Item removed!");
+      }
+  
+      throw new Error("Not found! Use Valid ID");
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+    }
+  };
+  

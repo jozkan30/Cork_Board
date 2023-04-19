@@ -6,4 +6,5 @@ router.get("/", controllers.getReviews);
 router.get("/:id", controllers.getSingleReview);
 router.post("/", controllers.createReview)
 router.post("/:id/comments", controllers.createComment)
+router.delete("/:id", controllers.deleteReview)
 export default router
