@@ -1,7 +1,5 @@
-import mongoose from 'mongoose'
 import connection from './connection.js'
-import data from './data.json' assert { type: 'json' }
-import {Review} from './Wine.js'
+import Review from './Wine.js'
 
 const reviews = [
     {
@@ -11,11 +9,10 @@ const reviews = [
       image: 'https://example.com/image.jpg',
     }]
 
-    async function seed() {
-        await Review.deleteMany({});
-        await Review.insertMany(reviews);
-        console.log('Database seeded!');
-        mongoose.disconnect();
-      }
-      
-      seed();
+    const insertData = async () => {
+        await connection.dropDatabase();
+        await Review.create(reviews)
+        await connection.close();
+    }
+    
+    insertData();

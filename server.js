@@ -1,17 +1,22 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const Review = require('./models/review');
+import express from "express";
+import cors from "cors";
+import logger from "morgan";
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
+app.use(logger("dev"));
 
+app.use("/", routes);
 
-mongoose.connect('mongodb://localhost:27017/wine-reviews', { useNewUrlParser: true });
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
+db.on("connected", () => {
+  console.clear();
+  console.log("Connected to MongoDB!");
+  app.listen(PORT, () => {
+    console.log(
+      `Express server is running in development on http://localhost:${PORT}`
+    );
+  });
 });
