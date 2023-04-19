@@ -1,0 +1,11 @@
+.card{
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.card-container{
+    background-color: rgb(239, 231, 220);
+    width: 500px;
+    
+}

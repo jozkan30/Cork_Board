@@ -1,0 +1,14 @@
+.header-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #edf1d6;
+    padding: 3rem;
+  }
+  
+  .header-img {
+    width: 90%;
+    border-radius: 10px;
+    border: solid;
+  }
